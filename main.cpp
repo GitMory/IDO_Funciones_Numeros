@@ -4,10 +4,10 @@ using namespace std;
 
 // Autor: Hernan Zapata Luque (215284)
 // Fecha: 11/04/2024
-// Idea del programa: Este programa permite calcular diversas operaciones matemáticas,
-// incluyendo sumatorias, factorial y términos de la secuencia de Fibonacci.
+// Idea del programa: Este programa permite calcular diversas operaciones matemï¿½ticas,
+// incluyendo sumatorias, factorial y tï¿½rminos de la secuencia de Fibonacci.
 
-int sumatoriaUno(int n, int inicio) {
+void sumatoriaUno(int n, int inicio) {
     int suma = 0;
     cout << "Secuencia: ";
     for (int i = inicio; i <= n; ++i) {
@@ -15,10 +15,10 @@ int sumatoriaUno(int n, int inicio) {
         cout << "1 ";
     }
     cout << endl;
-    return suma;
+    cout << "Sumatoria: " << suma << endl;
 }
 
-int sumatoriaDos(int n, int inicio) {
+void sumatoriaDos(int n, int inicio) {
     int suma = 0;
     cout << "Secuencia: ";
     for (int i = inicio; i <= n; ++i) {
@@ -26,10 +26,10 @@ int sumatoriaDos(int n, int inicio) {
         cout << i << " ";
     }
     cout << endl;
-    return suma;
+    cout << "Sumatoria: " << suma << endl;
 }
 
-int sumatoriaTres(int n, int inicio) {
+void sumatoriaTres(int n, int inicio) {
     int suma = 0;
     cout << "Secuencia: ";
     for (int i = inicio; i <= n; ++i) {
@@ -37,43 +37,53 @@ int sumatoriaTres(int n, int inicio) {
         cout << i * i << " ";
     }
     cout << endl;
-    return suma;
+    cout << "Sumatoria: " << suma << endl;
 }
 
-int factorialRecursivo(int n) {
+void factorialRecursivo(int n) {
     if (n == 0 || n == 1) {
         cout << "Secuencia: 1" << endl;
-        return 1;
+        cout << "Sumatoria: 1" << endl;
     } else {
+        int factorial = 1;
+        int suma = 1;
         cout << "Secuencia: ";
         for (int i = 1; i <= n; ++i) {
-            cout << i << " ";
+            factorial *= i;
+            suma += factorial;
+            cout << factorial << " ";
         }
         cout << endl;
-        return n * factorialRecursivo(n - 1);
+        cout << "Sumatoria: " << suma << endl;
     }
 }
 
-int fibonacciRecursivo(int n) {
+
+void fibonacciRecursivo(int n) {
+    // La razon por la que se muestra terminos n+1 es poque a diferencia de los otros algoritmos
+    // este inica desde 0 y no desde 1
+    cout << "---  Ignorar el 0 ---"<<endl;
     if (n <= 0) {
         cout << "Secuencia: 0" << endl;
-        return 0;
+        cout <<"Suma: "<<n<< endl;
     } else if (n == 1) {
         cout << "Secuencia: 0 1" << endl;
-        return 1;
+        cout <<"Suma: "<<n<< endl;
     } else {
         cout << "Secuencia: 0 1 ";
         int a = 0;
         int b = 1;
         int c;
+        int suma = 1;
         for (int i = 2; i <= n; ++i) {
             c = a + b;
+            suma += c;
             cout << c << " ";
             a = b;
             b = c;
         }
         cout << endl;
-        return c;
+        cout << "Sumatoria: " << suma << endl;
     }
 }
 
@@ -96,23 +106,23 @@ int main() {
         case 1:
             cout << "Introduce el valor inicial (i): ";
             cin >> inicio;
-            cout << "La sumatoria es: " << sumatoriaUno(numero, inicio) << endl;
+            sumatoriaUno(numero, inicio);
             break;
         case 2:
             cout << "Introduce el valor inicial (i): ";
             cin >> inicio;
-            cout << "La sumatoria es: " << sumatoriaDos(numero, inicio) << endl;
+            sumatoriaDos(numero, inicio);
             break;
         case 3:
             cout << "Introduce el valor inicial (i): ";
             cin >> inicio;
-            cout << "La sumatoria es: " << sumatoriaTres(numero, inicio) << endl;
+            sumatoriaTres(numero, inicio);
             break;
         case 4:
-            cout << "El factorial de " << numero << " es: " << factorialRecursivo(numero) << endl;
+            factorialRecursivo(numero);
             break;
         case 5:
-            cout << "El termino " << numero << " de la secuencia de Fibonacci es: " << fibonacciRecursivo(numero) << endl;
+            fibonacciRecursivo(numero);
             break;
         default:
             cout << "Opcion no valida." << endl;
